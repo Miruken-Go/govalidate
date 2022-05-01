@@ -1,3 +1,3 @@
-# Miruken integration of go-playground validator
+# Miruken integration of govalidator
 
-https://github.com/go-playground/validator
+https://github.com/asaskevich/govalidator
