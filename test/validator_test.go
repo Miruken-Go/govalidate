@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-//go:generate $GOPATH/bin/mirukentypes -tests
+//go:generate $GOPATH/bin/miruken -tests
 
 // Address contains user address information.
 type Address struct {
@@ -51,10 +51,10 @@ type ValidatorTestSuite struct {
 }
 
 func (suite *ValidatorTestSuite) SetupTest() {
-	suite.handler = miruken.NewRegistration(
-		miruken.WithHandlerTypes(HandlerTestTypes...),
+	suite.handler = miruken.Setup(
+		TestFeature,
 		WithGoValidation(),
-	).Build()
+	)
 }
 
 func (suite *ValidatorTestSuite) TestValidator() {
@@ -104,6 +104,22 @@ func (suite *ValidatorTestSuite) TestValidator() {
 		} else {
 			suite.Fail("expected error")
 		}
+	})
+
+	suite.Run("Group", func() {
+		create := CreateUser{
+			User{
+				Email: "john",
+				Home:  &Address{},
+				Work:  []Address{{}},
+			},
+		}
+		outcome, err := miruken.Validate(suite.handler, &create, "Admin")
+		suite.Nil(err)
+		suite.NotNil(outcome)
+		suite.False(outcome.Valid())
+		suite.Equal([]string{"User"}, outcome.Fields())
+		suite.Equal("User: (Age: User.Age: non zero value required; Email: User.Email: john does not validate as email; Home: (Street: User.Home.Street: non zero value required; Zip: User.Home.Zip: non zero value required); Name: User.Name: non zero value required; Password: User.Password: non zero value required; Work: (0: (Street: User.Work.0.Street: non zero value required; Zip: User.Work.0.Zip: non zero value required)))", outcome.Error())
 	})
 }
 

@@ -6,16 +6,16 @@ import "github.com/miruken-go/miruken"
 // for https://github.com/asaskevich/govalidator
 type GoValidationInstaller struct{}
 
-func (v *GoValidationInstaller) Install(registration *miruken.Registration) {
-	if registration.CanInstall(&_registrationTag) {
-		registration.Install(miruken.WithValidation())
-		registration.AddHandlerTypes(miruken.TypeOf[*validator]())
+func (v *GoValidationInstaller) Install(setup *miruken.SetupBuilder) {
+	if setup.CanInstall(&_featureTag) {
+		setup.Install(miruken.WithValidation())
+		setup.RegisterHandlers(&validator{})
 	}
 }
 
 func WithGoValidation(
 	config ...func(installer *GoValidationInstaller),
-) miruken.Installer {
+) miruken.Feature {
 	installer := &GoValidationInstaller{}
 	for _, configure := range config {
 		if configure != nil {
@@ -25,4 +25,4 @@ func WithGoValidation(
 	return installer
 }
 
-var _registrationTag byte
+var _featureTag byte
