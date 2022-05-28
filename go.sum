@@ -10,8 +10,8 @@ github.com/hashicorp/go-multierror v1.1.1 h1:H5DkEtf6CXdFp0N0Em5UCwQpXMWke8IA0+l
 github.com/hashicorp/go-multierror v1.1.1/go.mod h1:iw975J/qwKPdAO1clOe2L8331t/9/fmwbPZ6JB6eMoM=
 github.com/imdario/mergo v0.3.12 h1:b6R2BslTbIEToALKP7LxUvijTsNI9TAe80pLWN2g/HU=
 github.com/imdario/mergo v0.3.12/go.mod h1:jmQim1M+e3UYxmgPu/WyfjB3N3VflVyUjjjwH0dnCYA=
-github.com/miruken-go/miruken v0.6.0 h1:PPLi4V8PEEj/S1oUGpYfSxFiuNobspBWIMCd8NFBD/o=
-github.com/miruken-go/miruken v0.6.0/go.mod h1:cW54qJFlRPmVzQRi7hwbKIbVutHfQUPPAVLdXwXUNKk=
+github.com/miruken-go/miruken v0.8.0 h1:HlClnD2s1HS0LawgoWrMM7FLw0fMgr/0ZmM12VQxEgM=
+github.com/miruken-go/miruken v0.8.0/go.mod h1:cW54qJFlRPmVzQRi7hwbKIbVutHfQUPPAVLdXwXUNKk=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
