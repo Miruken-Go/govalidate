@@ -2,13 +2,17 @@ package govalidate
 
 import "github.com/miruken-go/miruken"
 
-// GoValidationInstaller enables validation support
+// GoValidationInstaller integrates validation
+// support for the go validator.
 // for https://github.com/asaskevich/govalidator
 type GoValidationInstaller struct{}
 
+func (v *GoValidationInstaller) DependsOn() []miruken.Feature {
+	return []miruken.Feature{miruken.WithValidation()}
+}
+
 func (v *GoValidationInstaller) Install(setup *miruken.SetupBuilder) error {
 	if setup.CanInstall(&_featureTag) {
-		setup.Install(miruken.WithValidation())
 		setup.RegisterHandlers(&validator{})
 	}
 	return nil
